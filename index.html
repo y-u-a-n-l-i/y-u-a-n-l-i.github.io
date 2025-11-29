@@ -62,6 +62,52 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
+              <tr onmouseout="GSPredict_stop()" onmouseover="GSPredict_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class="two" id='GSPredict_image'><video width=100% muted autoplay loop>
+                        <source src="img/GSPredict.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video></div>
+                    <img id='GSPredict_teaser' src='img/GSPredict.png' width=100%>
+                  </div>
+                  <script type="text/javascript">
+                    function GSPredict_start() {
+                      document.getElementById('GSPredict_image').style.opacity = "1";
+                      document.getElementById('GSPredict_teaser').style.opacity = "0";
+                    }
+
+                    function GSPredict_stop() {
+                      document.getElementById('GSPredict_image').style.opacity = "0";
+                      document.getElementById('GSPredict_teaser').style.opacity = "1";
+                    }
+                    GSPredict_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="">
+                    <span class="papertitle">GeneAvatar: Generic Expression-Aware Volumetric Head Avatar Editing from a Single Image</span>
+                  </a>
+                  <br>
+                  <a href="https://chobao.github.io/">Chong Bao*</a>,
+                  <a href="https://www.zhangyinda.com/">Yinda Zhang*</a>,
+                  <strong>Yuan Li*</strong>,
+                  <a>Xiyu Zhang</a>,
+                  <a href="https://ybbbbt.com/">Bangbang Yang</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
+                  <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Guofeng Zhang</a>,
+                  <a href="https://zhpcui.github.io/">Zhaopeng Cui</a>
+                  <br>
+                  <em>CVPR</em>, 2024
+                  <br>
+                  <a href="">project page</a>
+                  /
+                  <a href="">arXiv</a>
+                  <p></p>
+                </td>
+              </tr>
+
               <tr onmouseout="GeneAvatar_stop()" onmouseover="GeneAvatar_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
                   <div class="one">
