@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="IM-Portrait">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IM-Portrait</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">IM-Portrait: Learning 3D-aware Video Diffusion for Photorealistic
+              Talking Heads from Monocular Videos.</h1>
+            <div class="title is-3">
+              <strong> CVPR 2025 </strong>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://y-u-a-n-l-i.github.io/">Yuan Li</a><sup>1,2</sup>*<sup>&sect;</sup>,</span>
+              <span class="author-block">
+                <a href="https://zqbai-jeremy.github.io/">Ziqian Bai</a><sup>1</sup>*,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=qsrpuKIAAAAJ">Feitong Tan</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://zhpcui.github.io/">Zhaopeng Cui</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.seanfanello.it/">Sean Fanello</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.zhangyinda.com/">Yinda Zhang</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Google, </span>
+              <span class="author-block"><sup>2</sup>State Key Lab of CAD and CG, Zhejiang University</span>
+            </div>
+
+            <div style="color:rgb(50, 50, 50)">
+              * denotes equal contribution
+              <br>
+              &sect; Work was conducted while Yuan Li was an intern at Google.
+              <br>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2504.19165" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <span>Cite</span>
+                  </a>
+                </span>
+                <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-1 is-multiline is-mobile">
+          <div class="column pb-0 mb-0 is-full">
+            <img src="static/images/teaser.jpg">
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered">
+          <b>IM-Portrait</b> generates videos in Multiplane Images (MPIs) by taking an reference image
+          and a sequence of tracking signals as inputs.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <hr>
+          <div class="content has-text-justified">
+            <p>
+              We propose a novel 3D-aware diffusion-based method for generating photorealistic talking head videos directly from a single identity image and explicit control signals (e.g.,
+              expressions).
+            </p>
+            <p>
+              Our method generates Multiplane Images (MPIs) that ensure geometric consistency, making them ideal for immersive viewing experiences like binocular videos for VR headsets.
+              Unlike existing methods that often require a separate stage or joint optimization to reconstruct a 3D representation (such as NeRF or 3D Gaussians), our approach directly generates the
+              final output through a single denoising process, eliminating the need for post-processing steps to render novel views efficiently.
+            </p>
+            <p>
+              To effectively learn from monocular videos, we introduce a training mechanism that reconstructs the output MPI randomly in either the target or the reference camera space. This approach
+              enables the model to simultaneously learn sharp image details and underlying 3D information.
+              Extensive experiments demonstrate the effectiveness of our method, which achieves competitive avatar quality and novel-view rendering capabilities, even without explicit 3D
+              reconstruction or high-quality multi-view training data.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div> -->
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Pipeline</h2>
+          <hr>
+          <div class="column pb-0 mb-0 is-full">
+            <img src="static/images/pipeline.jpg">
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Our model is built on the architecture of <a href="https://lumiere-video.github.io/">Lumiere</a>, which takes an identity image, 2D noise video, the sequence of expressions rendered from
+              3DMM model and first
+              frame image as input and outputs MPI video sequences. During inference, the network is conditioned on a reference portrait and takes the last frame of previously generated clip as the
+              first frame condition. We separate the network into a color branch and a geometry branch.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns">
+        <div class="column">
+          <h2 class="title is-3 is-centered has-text-centered">Visual Comparisons</h2>
+          <hr>
+          <p>
+            We compare our method with existing one-shot photoreal talking heads approaches trained from monocular videos in the wild:
+            <a href="https://nvlabs.github.io/face-vid2vid/">Face-V2V</a>,
+            <a href="https://neeek2303.github.io/EMOPortraits/">EMOPortrait</a>,
+            <a href="https://yudeng.github.io/Portrait4D-v2/">Portrait4D-v2</a>,
+            <a href="https://github.com/bytedance/X-Portrait">X-Portrait</a>,
+            <a href="https://follow-your-emoji.github.io/">Follow-Your-Emoji</a>
+            in a <b>self-reenactment</b> setting.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div class="columns is-centered has-text-centered" style="color:rgb(100, 100, 100)">
+          <div class="column">
+            Reference Image
+          </div>
+          <div class="column">
+            Face-V2V
+          </div>
+          <div class="column">
+            EMOPortrait
+          </div>
+          <div class="column">
+            Portrait4D-v2
+          </div>
+        </div>
+        <div id="results-carousel" class="carousel_self results-carousel">
+          <div class="item item-id0">
+            <video poster="" id="id0" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id0.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id1">
+            <video poster="" id="id1" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id2">
+            <video poster="" id="id2" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id3">
+            <video poster="" id="id3" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id3.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id4">
+            <video poster="" id="id4" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id5">
+            <video poster="" id="id5" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id6">
+            <video poster="" id="id6" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id6.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id7">
+            <video poster="" id="id7" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id7.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id8">
+            <video poster="" id="id8" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self/id8.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br>
+        <div class="columns is-centered has-text-centered" style="color:rgb(100, 100, 100)">
+          <div class="column">
+            X-Portrait
+          </div>
+          <div class="column">
+            Follow-Your-Emoji
+          </div>
+          <div class="column">
+            <b>Ours</b>
+          </div>
+          <div class="column">
+            Ground Truth
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns">
+        <div class="column">
+          <h2 class="title is-3 is-centered has-text-centered">Side View Visualization</h2>
+          <hr>
+          <p>
+            Here we show side view renderings. We generate all the videos with the same setting as self-reenactments where the first frame is used as reference portrait and the rest frames become
+            driving signals.
+            Since we use MPI as our scene representation, the generated talking head videos does not support rendering from excessive camera viewpoint changes. However, our method can
+            still generate reasonable stereo videos for viewing purpose.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div id="results-carousel-side" class="carousel_side_1 results-carousel">
+          <div class="item item-id0">
+            <video poster="" id="id0" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id0.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id1">
+            <video poster="" id="id1" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id2">
+            <video poster="" id="id2" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id3">
+            <video poster="" id="id3" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id3.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id4">
+            <video poster="" id="id4" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id5">
+            <video poster="" id="id5" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id6">
+            <video poster="" id="id6" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id6.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id7">
+            <video poster="" id="id7" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id7.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id8">
+            <video poster="" id="id8" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id8.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id9">
+            <video poster="" id="id9" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id9.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id10">
+            <video poster="" id="id10" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id10.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id11">
+            <video poster="" id="id11" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/round_loop/id11.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="columns">
+        <div class="column">
+          <p>
+            We can further set two fixed side view cameras and render generated MPI videos from . -5° and +5°.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div style="width:50%; margin:0 auto;">
+          <div id="results-carousel-side" class="carousel_side_2 results-carousel">
+            <div class="item item-id0">
+              <video poster="" id="id0" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/side_view/id_0.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-id1">
+              <video poster="" id="id1" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/side_view/id_1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns">
+        <div class="column">
+          <h2 class="title is-3 is-centered has-text-centered">Evaluation on Synthetic Data</h2>
+          <hr>
+          <p>
+            Despite trained on real world talking-head videos, our model still generalizes to stylized portraits generated by <a
+              href="https://stability.ai/news/stable-diffusion-3">Stable-Diffusion</a>.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div style="width:75%; margin:0 auto;">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              Reference Portrait
+            </div>
+            <div class="column">
+              Target expressions
+            </div>
+            <div class="column">
+              Generated Results
+            </div>
+          </div>
+          <div id="results-carousel-synthetic" class="carousel_synthetic results-carousel">
+            <div class="item item-id0">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-4">
+                  <img src="./static/videos/synthetic/synthetic_human_0.png" width="100%">
+                </div>
+                <div class="column">
+                  <video poster="" id="synthetic_0" autoplay controls muted loop playsinline width="100%">
+                    <source src="./static/videos/synthetic/synthetic_0.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="item item-id1">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-4">
+                  <img src="./static/videos/synthetic/synthetic_human_1.png" width="100%">
+                </div>
+                <div class="column">
+                  <video poster="" id="synthetic_1" autoplay controls muted loop playsinline width="100%">
+                    <source src="./static/videos/synthetic/synthetic_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns">
+        <div class="column">
+          <h2 class="title is-3 is-centered has-text-centered">Long Video Generation</h2>
+          <hr>
+          <p>
+            We show the long videos generated by our model.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div style="width:75%; margin:0 auto;">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              Reference Portrait
+            </div>
+            <div class="column">
+              Target expressions
+            </div>
+            <div class="column">
+              Generated Results
+            </div>
+          </div>
+          <div id="results-carousel-long" class="carousel_long results-carousel">
+            <div class="item item-id0">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-4">
+                  <img src="./static/videos/long/source_image_id0.png" width="100%">
+                </div>
+                <div class="column">
+                  <video poster="" id="long_0" autoplay controls muted loop playsinline width="100%">
+                    <source src="./static/videos/long/long_combined_0.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="item item-id1">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-4">
+                  <img src="./static/videos/long/source_image_id0.png" width="100%">
+                </div>
+                <div class="column">
+                  <video poster="" id="long_1" autoplay controls muted loop playsinline width="100%">
+                    <source src="./static/videos/long/long_combined_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns">
+        <div class="column">
+          <h2 class="title is-3 is-centered has-text-centered">Stereo Videos</h2>
+          <hr>
+          <p>
+            Here we show stereo videos rendered from generated MPI videos. We test all the stereo videos with Google Cardboard. Specifically, we tested the stereo videos on a 6.1-inch iPhone 15 Pro in
+            album's preview-mode, slideshow,
+            and fullscreen play. We also tested the stereo videos on a 6.7-inch Google Pixel 7 Pro using fullscreen play.
+          </p>
+        </div>
+      </div>
+      <div style="background-color:rgb(249, 249, 249); border-radius: 5px;">
+        <div id="results-carousel-stereo" class="carousel_stereo results-carousel">
+          <div class="item item-id0">
+            <video poster="" id="id0" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id0.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id1">
+            <video poster="" id="id1" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id2">
+            <video poster="" id="id2" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id3">
+            <video poster="" id="id3" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id3.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id4">
+            <video poster="" id="id4" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id5">
+            <video poster="" id="id5" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id6">
+            <video poster="" id="id6" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id6.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id7">
+            <video poster="" id="id7" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id7.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id8">
+            <video poster="" id="id8" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id8.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id9">
+            <video poster="" id="id9" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id9.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id10">
+            <video poster="" id="id10" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id10.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-id11">
+            <video poster="" id="id11" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/stereo_video/id11.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre>
+        <code>
+@article{li2025IMPortrait,
+          author    = {Li, Yuan and Bai, Ziqian and Tan, Feitong and Cui, Zhaopeng and Fanello, Sean and Zhang, Yinda},
+          title     = {IM-Portrait: Learning 3D-aware Video Diffusion for PhotorealisticTalking Heads from Monocular Videos},
+          journal   = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+          year      = {2025},
+        }
+        </code>
+      </pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              We borrow the source code of this website
+              <a href="https://github.com/nerfies/nerfies.github.io">from here</a>
+              which is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

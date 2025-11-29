@@ -25,15 +25,15 @@
                   <p class="name" style="text-align: center;">
                     Yuan Li
                   </p>
-                  <p>My name is Yuan Li(李渊 in chinese). I am a master student in the <a href="http://www.cad.zju.edu.cn/index.html">State Key Laboratory of CAD&CG</a> and advised by prof. <a
+                  <p>My name is Yuan Li(李渊 in chinese). I am a second-year master student in the <a href="http://www.cad.zju.edu.cn/index.html">State Key Laboratory of CAD&CG</a> and advised by prof. <a
                       href="https://zhpcui.github.io/">Zhaopeng Cui</a>. </p>
                   <p> I got my B.Eng degree in Computer Science from <a href="http://ckc.zju.edu.cn/ckcen/_t1906/main.psp">Chu Kochen Honors College</a>, <a href="http://zju.edu.cn/">Zhejiang
-                      University</a> in 2023. During my undergraduate reasearch internship, I was honoered to be advised by prof. <a href="http://shenlong.web.illinois.edu/">Shenlong Wang</a>, <a
+                      University</a> in 2023. During my undergraduate research internship, I was honored to be advised by Prof. <a href="http://shenlong.web.illinois.edu/">Shenlong Wang</a>, <a
                       href="https://cs.illinois.edu/">UIUC Department of Computer Science</a>.</p>
-                  <p> I am interested in 3D scene modeling and editing, deep learning and computer graphics. </p>
+                  <p> I am interested in 3D scene modeling and editing, deep learning, and computer graphics. </p>
 
                   <p style="text-align:center;">
-                    <a href="mailto:yuan_li@zju.edu.cn"><i class="fa-solid fa-envelope" style=" font-size: 24px;"></i></a> &nbsp;/&nbsp;
+                    <a href="mailto:leeyuan167@gmail.com"><i class="fa-solid fa-envelope" style=" font-size: 24px;"></i></a> &nbsp;/&nbsp;
                     <a href="https://scholar.google.com/citations?user=9mWanpUAAAAJ&hl=en" style=" font-size: 24px;"><i class="ai ai-google-scholar"></i></a> &nbsp;/&nbsp;
                     <a href="https://github.com/y-u-a-n-l-i"><i class="fab fa-github" style=" font-size: 24px;"></i></a>
                   </p>
@@ -55,6 +55,7 @@
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
                   <h2>Research</h2>
+                  (* denotes equal contribution)
                 </td>
               </tr>
             </tbody>
@@ -62,48 +63,102 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
-              <tr onmouseout="GSPredict_stop()" onmouseover="GSPredict_start()">
+              <tr>
                 <td style="padding:20px;width:25%;vertical-align:middle">
                   <div class="one">
-                    <div class="two" id='GSPredict_image'><video width=100% muted autoplay loop>
-                        <source src="img/GSPredict.mp4" type="video/mp4">
+                    <div class="two" id="IMPortrait_image">
+                      <video width="100%" muted="" autoplay="" loop="" playsinline="">
+                        <source src="img/IMPortrait.mp4" type="video/mp4">
                         Your browser does not support the video tag.
-                      </video></div>
-                    <img id='GSPredict_teaser' src='img/GSPredict.png' width=100%>
+                      </video>
+                    </div>
                   </div>
-                  <script type="text/javascript">
-                    function GSPredict_start() {
-                      document.getElementById('GSPredict_image').style.opacity = "1";
-                      document.getElementById('GSPredict_teaser').style.opacity = "0";
-                    }
-
-                    function GSPredict_stop() {
-                      document.getElementById('GSPredict_image').style.opacity = "0";
-                      document.getElementById('GSPredict_teaser').style.opacity = "1";
-                    }
-                    GSPredict_stop()
-                  </script>
                 </td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
                   <a href="">
-                    <span class="papertitle">GeneAvatar: Generic Expression-Aware Volumetric Head Avatar Editing from a Single Image</span>
+                    <span class="papertitle">IM-Portrait: Learning 3D-aware Video Diffusion for Photorealistic
+                      Talking Heads from Monocular Videos</span>
+                  </a>
+                  <div>
+                    <strong>Yuan Li*</strong>,
+                    <a href="https://scholar.google.com/citations?user=opKYi4YAAAAJ&hl=zh-CN">Ziqian Bai*</a>,
+                    <a href="https://scholar.google.com/citations?user=qsrpuKIAAAAJ&hl=en">Feitong Tan</a>,
+                    <a href="https://zhpcui.github.io/">Zhaopeng Cui</a>,
+                    <a href="https://www.seanfanello.it/">Sean Fanello</a>,
+                    <a href="https://www.zhangyinda.com/">Yinda Zhang</a>
+                  </div>
+                  <div id="conference_name">
+                    <em>CVPR 2025</em>
+                  </div>
+
+                  <div id="paper_related">
+                    <a href="https://y-u-a-n-l-i.github.io/projects/IM-Portrait/">Project Page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2504.19165">arXiv</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class="two" id="Neuarl-Gaffer_image">
+                      <video width="100%" muted="" autoplay="" loop="" playsinline="">
+                        <source src="img/Neuarl-Gaffer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://neural-gaffer.github.io/">
+                    <span class="papertitle">Neural Gaffer: Relighting Any Object via Diffusion</span>
+                  </a>
+                  <div>
+                    <a href="https://haian-jin.github.io/">Haian Jin</a>,
+                    <strong>Yuan Li</strong>,
+                    <a href="https://luanfujun.com/">Fujun Luan</a>,
+                    <a href="https://kam1107.github.io/">Yuanbo Xiangli</a>,
+                    <a href="https://sai-bi.github.io/">Sai Bi</a>,
+                    <a href="https://kai-46.github.io/website/">Kai Zhang</a>,
+                    <a href="https://zexiangxu.github.io/">Zexiang Xu</a>,
+                    <a href="https://jinsungit.github.io/">Jin Sun</a>,
+                    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
+                  </div>
+                  <div id="conference_name">
+                    <em>NeurIPS 2024</em>
+                  </div>
+
+                  <div id="paper_related">
+                    <a href="https://neural-gaffer.github.io/">Project Page</a>
+                    /
+                    <a href="https://arxiv.org/abs/2406.07520">arXiv</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <img id='GSPredict_teaser' src='img/GSPrediction.png' width=100%>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  <a href="https://zju3dv.github.io/gaussian-prediction/">
+                    <span class="papertitle">GaussianPrediction: Dynamic 3D Gaussian Prediction for Motion Extrapolation and Free View Synthesis</span>
                   </a>
                   <br>
-                  <a href="https://chobao.github.io/">Chong Bao*</a>,
-                  <a href="https://www.zhangyinda.com/">Yinda Zhang*</a>,
+                  <a href="https://scholar.google.com.hk/citations?hl=zh-CN&amp;user=krMWXqMAAAAJ">Boming Zhao*</a>,
                   <strong>Yuan Li*</strong>,
-                  <a>Xiyu Zhang</a>,
-                  <a href="https://ybbbbt.com/">Bangbang Yang</a>,
+                  <a href="https://github.com/Zysun2002">Ziyu Sun</a>,
+                  <a href="https://github.com/zl264">Lin Zeng</a>,
+                  <a href="https://shenyujun.github.io/">Yujun Shen</a>,
+                  <a href="https://ruim-jlu.github.io/">Rui Ma</a>,
+                  <a href="https://www.zhangyinda.com/">Yinda Zhang</a>,
                   <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
-                  <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a>,
-                  <a href="http://www.cad.zju.edu.cn/home/gfzhang/">Guofeng Zhang</a>,
                   <a href="https://zhpcui.github.io/">Zhaopeng Cui</a>
                   <br>
-                  <em>CVPR</em>, 2024
+                  <em>SIGGRAPH Conference</em>, 2024
                   <br>
-                  <a href="">project page</a>
+                  <a href="https://zju3dv.github.io/gaussian-prediction/">project page</a>
                   /
-                  <a href="">arXiv</a>
+                  <a href="https://arxiv.org/abs/2405.19745">arXiv</a>
                   <p></p>
                 </td>
               </tr>
@@ -131,7 +186,7 @@
                   </script>
                 </td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="">
+                  <a href="https://zju3dv.github.io/geneavatar/">
                     <span class="papertitle">GeneAvatar: Generic Expression-Aware Volumetric Head Avatar Editing from a Single Image</span>
                   </a>
                   <br>
@@ -147,9 +202,9 @@
                   <br>
                   <em>CVPR</em>, 2024
                   <br>
-                  <a href="">project page</a>
+                  <a href="https://zju3dv.github.io/geneavatar/">project page</a>
                   /
-                  <a href="">arXiv</a>
+                  <a href="https://arxiv.org/abs/2404.02152">arXiv</a>
                   <p></p>
                 </td>
               </tr>
@@ -183,7 +238,7 @@
                   <a href="https://zhihao-lin.github.io/">Zhi-Hao Lin*</a>,
                   <a href="http://luthuli.cs.uiuc.edu/~daf/">David Forsyth</a>,
                   <a href="https://jbhuang0604.github.io/">Jia-Bin Huang</a>,
-                  <a href="http://shenlong.web.illinois.edu/">Shenlong Wang</a>,
+                  <a href="http://shenlong.web.illinois.edu/">Shenlong Wang</a>
                   <br>
                   <em>ICCV</em>, 2023
                   <br>
@@ -210,6 +265,19 @@
           </table>
           <table width="100%" align="center" border="0" cellpadding="20">
             <tbody>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle;"><img src="img/icons/Google_2015_logo.svg.webp" style="width:100%"></td>
+                <td width="75%" valign="center">
+                  <b>Google</b>
+                  <br>
+                  Student Researcher
+                  <br>
+                  Advisor: <a href="https://www.zhangyinda.com/">Yinda Zhang</a>
+                  <br>
+                  08/2024--12/2024
+                </td>
+              </tr>
 
               <tr>
                 <td style="padding:20px;width:25%;vertical-align:middle;"><img src="img/icons/zju.png" style="width:100%"></td>
@@ -269,17 +337,17 @@
   </table>
   <!-- Default Statcounter code for Personal Website
     https://y-u-a-n-l-i.github.io/ -->
-    <script type="text/javascript">
-      var sc_project=12835560; 
-      var sc_invisible=1; 
-      var sc_security="884eea2c"; 
-      </script>
-      <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js" async></script>
-      <noscript><div class="statcounter"><a title="hit counter"
-      href="https://statcounter.com/" target="_blank"><img class="statcounter"
-      src="https://c.statcounter.com/12835560/0/884eea2c/1/" alt="hit counter"
-      referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-    <!-- End of Statcounter Code -->
+  <script type="text/javascript">
+    var sc_project = 12835560;
+    var sc_invisible = 1;
+    var sc_security = "884eea2c"; 
+  </script>
+  <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript>
+    <div class="statcounter"><a title="hit counter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12835560/0/884eea2c/1/" alt="hit counter"
+          referrerPolicy="no-referrer-when-downgrade"></a></div>
+  </noscript>
+  <!-- End of Statcounter Code -->
 </body>
+
 </html>
