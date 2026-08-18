@@ -262,6 +262,13 @@ a:hover {
   transform: translateY(-2px);
 }
 
+.social-links .cv-link {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
 .section-divider {
   height: 1px;
   margin: 0 44px;
